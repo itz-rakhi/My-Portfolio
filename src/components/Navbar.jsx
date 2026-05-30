@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 import { useTheme } from '../App';
 
-const NAV_LINKS = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
+const NAV_LINKS = ['Home', 'About', 'Skills', 'Projects', 'Certificates', 'Contact'];
 
 export default function Navbar() {
   const { dark, toggle } = useTheme();
