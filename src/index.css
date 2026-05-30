@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* ── Dark theme (default) ── */
+  body {
+    background-color: #080810;
+    color: #e2e8f0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  /* ── Light theme ── */
+  body.light {
+    background-color: #f1f5f9;
+    color: #0f172a;
+  }
+}
+
+@layer utilities {
+  /* Dark glass */
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.4s ease, border-color 0.4s ease;
+  }
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  /* Light glass */
+  body.light .glass {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    box-shadow: 0 4px 24px rgba(124, 58, 237, 0.06);
+  }
+  body.light .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(139, 92, 246, 0.35);
+  }
+
+  /* Gradient text — same in both themes */
+  .gradient-text {
+    background: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-bg {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5, #0ea5e9);
+  }
+  .section-divider {
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent);
+    height: 1px;
+    width: 100%;
+  }
+
+  /* Light theme text overrides */
+  body.light .text-slate-200 { color: #1e293b; }
+  body.light .text-slate-300 { color: #334155; }
+  body.light .text-slate-400 { color: #475569; }
+  body.light .text-slate-500 { color: #64748b; }
+  body.light .text-white     { color: #0f172a; }
+
+  /* Light navbar shadow */
+  body.light nav.scrolled-nav {
+    box-shadow: 0 4px 24px rgba(124, 58, 237, 0.1);
+  }
+}
