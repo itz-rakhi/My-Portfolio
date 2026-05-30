@@ -14,7 +14,7 @@ const CERTS = [
     date: 'Jan 2025 – Jan 2026',
     description:
       'Comprehensive training in Java Full Stack Development covering Core Java, Advanced Java, Spring Framework, Hibernate, React.js, and MySQL with hands-on project experience.',
-    skills: ['Core Java', 'Advanced Java', 'Spring Framework', 'Hibernate', 'React.js', 'MySQL'],
+    skills: ['C', 'C++', 'Core Java', 'Advanced Java', 'HTML', 'CSS', 'Bootstrap', 'JavaScript', 'jQuery', 'AJAX', 'Spring Framework', 'Hibernate', 'SQL', 'XML', 'JSON', 'ReactJS'],
     color: '#f472b6',
     gradient: 'from-pink-600/20 via-rose-600/15 to-purple-600/20',
     image: caddImg,
