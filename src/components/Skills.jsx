@@ -77,23 +77,6 @@ function SkillCard({ name, icon: Icon, level, color, index }) {
         <Icon size={28} style={{ color }} />
       </div>
       <span className="text-white text-xs font-semibold text-center leading-tight">{name}</span>
-      {/* Progress bar */}
-      <div className="w-full">
-        <div className="flex justify-between text-[10px] text-slate-600 mb-1">
-          <span>Skill</span>
-          <span>{level}%</span>
-        </div>
-        <div className="h-1 bg-white/5 rounded-full overflow-hidden">
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: `${level}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: index * 0.06 + 0.3, ease: 'easeOut' }}
-            className="h-full rounded-full"
-            style={{ background: `linear-gradient(90deg, ${color}99, ${color})` }}
-          />
-        </div>
-      </div>
     </motion.div>
   );
 }
