@@ -41,7 +41,7 @@ const CATEGORIES = [
     color: '#34d399',
     skills: [
       { name: 'MySQL', icon: SiMysql, level: 85 },
-      { name: 'MS SQL', icon: SiMysql, level: 80 },
+      { name: 'MS SQL', icon: FiDatabase, level: 80 },
     ],
   },
   {
