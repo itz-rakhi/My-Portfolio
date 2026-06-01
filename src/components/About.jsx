@@ -137,22 +137,7 @@ export default function About() {
 
           {/* Right — Text + cards */}
           <div className="lg:col-span-3 space-y-6">
-            <motion.p
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="text-slate-300 leading-relaxed text-lg"
-            >
-              I am a Computer Engineering student with a strong interest in{' '}
-              <span className="text-violet-400 font-semibold">Java Full Stack Development</span> and{' '}
-              <span className="text-sky-400 font-semibold">Data Analytics</span>. I enjoy developing
-              user-friendly applications, working with databases, and analyzing data to create
-              meaningful insights. I am continuously improving my technical skills and exploring
-              modern technologies to build efficient real-world solutions.
-            </motion.p>
-
-            <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4">
               {CARDS.map((card, i) => (
                 <InfoCard key={card.title} {...card} index={i} />
               ))}
