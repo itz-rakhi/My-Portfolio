@@ -113,11 +113,11 @@ function CertCard({ cert, index, onView }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       whileHover={{ y: -6 }}
-      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-violet-500/30 transition-all duration-300 group flex flex-col"
+      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-violet-500/30 transition-all duration-300 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0"
     >
       {/* Banner */}
       <div
-        className={`relative h-48 bg-gradient-to-br ${cert.gradient} flex items-center justify-center overflow-hidden cursor-pointer flex-shrink-0`}
+        className={`relative h-32 bg-gradient-to-br ${cert.gradient} flex items-center justify-center overflow-hidden cursor-pointer flex-shrink-0`}
         onClick={() => onView(cert)}
       >
         {cert.image ? (
@@ -137,10 +137,10 @@ function CertCard({ cert, index, onView }) {
             />
             <div className="relative z-10 flex flex-col items-center gap-3">
               <div
-                className="w-20 h-20 rounded-3xl flex items-center justify-center shadow-2xl"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl"
                 style={{ background: `linear-gradient(135deg, ${cert.color}40, ${cert.color}20)`, border: `2px solid ${cert.color}40` }}
               >
-                <FiAward size={38} style={{ color: cert.color }} />
+                <FiAward size={26} style={{ color: cert.color }} />
               </div>
               <span className="text-xs font-medium tracking-widest uppercase" style={{ color: `${cert.color}99` }}>
                 Certificate
@@ -156,7 +156,7 @@ function CertCard({ cert, index, onView }) {
       </div>
 
       {/* Body */}
-      <div className="p-6 flex flex-col flex-1">
+      <div className="p-4 flex flex-col flex-1">
         <div className="flex items-center gap-2 mb-3">
           <div
             className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -173,22 +173,22 @@ function CertCard({ cert, index, onView }) {
           </div>
         </div>
 
-        <h3 className="text-lg font-bold text-white mb-2 leading-snug">{cert.title}</h3>
-        <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">{cert.description}</p>
+        <h3 className="text-base font-bold text-white mb-1.5 leading-snug">{cert.title}</h3>
+        <p className="text-slate-400 text-xs leading-relaxed mb-3 flex-1">{cert.description}</p>
 
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {cert.skills.slice(0, 6).map((s) => (
+        <div className="flex flex-wrap gap-1 mb-3">
+          {cert.skills.slice(0, 4).map((s) => (
             <span
               key={s}
-              className="text-xs px-2.5 py-1 rounded-full font-medium"
+              className="text-[11px] px-2 py-0.5 rounded-full font-medium"
               style={{ background: `${cert.color}12`, color: cert.color, border: `1px solid ${cert.color}22` }}
             >
               {s}
             </span>
           ))}
-          {cert.skills.length > 6 && (
-            <span className="text-xs px-2.5 py-1 rounded-full font-medium text-slate-500 glass">
-              +{cert.skills.length - 6} more
+          {cert.skills.length > 4 && (
+            <span className="text-[11px] px-2 py-0.5 rounded-full font-medium text-slate-500 glass">
+              +{cert.skills.length - 4} more
             </span>
           )}
         </div>
@@ -197,7 +197,7 @@ function CertCard({ cert, index, onView }) {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => onView(cert)}
-          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all"
+          className="w-full flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-semibold transition-all"
           style={{ background: `${cert.color}18`, color: cert.color, border: `1px solid ${cert.color}30` }}
         >
           <FiAward size={14} /> View Certificate

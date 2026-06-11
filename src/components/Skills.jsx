@@ -57,23 +57,23 @@ const CATEGORIES = [
 
 ];
 
-function SkillCard({ name, icon: Icon, level, color, index }) {
+function SkillCard({ name, icon: Icon, color, index }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.85 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
-      whileHover={{ y: -6, scale: 1.04 }}
-      className="glass glass-hover rounded-2xl p-4 flex flex-col items-center gap-3 cursor-default transition-all duration-300 group"
+      whileHover={{ y: -4, scale: 1.05 }}
+      className="glass glass-hover rounded-xl p-3 flex flex-col items-center gap-2 cursor-default transition-all duration-300 group"
     >
       <div
-        className="w-14 h-14 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+        className="w-10 h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
         style={{ background: `${color}15`, border: `1px solid ${color}25` }}
       >
-        <Icon size={28} style={{ color }} />
+        <Icon size={20} style={{ color }} />
       </div>
-      <span className="text-white text-xs font-semibold text-center leading-tight">{name}</span>
+      <span className="text-white text-[11px] font-semibold text-center leading-tight">{name}</span>
     </motion.div>
   );
 }
@@ -129,7 +129,7 @@ export default function Skills() {
               </motion.div>
 
               {/* Skill cards grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
                 {cat.skills.map((skill, i) => (
                   <SkillCard key={skill.name} {...skill} color={cat.color} index={i} />
                 ))}

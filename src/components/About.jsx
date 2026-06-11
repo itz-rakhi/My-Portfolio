@@ -1,23 +1,36 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FiBook, FiTarget, FiCode, FiAward } from 'react-icons/fi';
+import { FiBook, FiTarget, FiCode, FiAward, FiMapPin } from 'react-icons/fi';
 import photo from '../assets/photo.jpeg';
 
-const CARDS = [
+const EDUCATION = [
   {
-    icon: FiBook,
-    title: 'Education',
-    color: '#a78bfa',
-    content:
-      'B.E. in Computer Engineering at Mumbai University (2022–2026). Developing strong knowledge in programming, database management, software development, and problem-solving.',
+    degree: 'Secondary School Certificate (10th)',
+    school: 'Vidya Niketan',
+    board: 'Maharashtra Board',
+    period: 'Jun 2020',
+    score: '89.60%',
+    color: '#f472b6',
   },
   {
-    icon: FiCode,
-    title: 'Technical Focus',
+    degree: 'Higher Secondary Certificate (12th)',
+    school: "Holy Angels' Junior College",
+    board: 'Maharashtra Board',
+    period: 'Jun 2022',
+    score: '82.17%',
     color: '#38bdf8',
-    content:
-      'Focused on Java Full Stack Development using Java, Spring Framework, Hibernate, React.js, and MySQL along with Data Analytics tools like Power BI, Tableau, Python, and MS Excel.',
   },
+  {
+    degree: 'B.E. in Computer Engineering',
+    school: 'Dilkap Research Institute of Engineering And Management Studies',
+    board: 'University of Mumbai',
+    period: 'Oct 2022 – Jun 2026',
+    score: 'Pursuing',
+    color: '#a78bfa',
+  },
+];
+
+const CARDS = [
   {
     icon: FiTarget,
     title: 'Career Goals',
@@ -135,13 +148,63 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right — Text + cards */}
+          {/* Right — Cards + Education */}
           <div className="lg:col-span-3 space-y-6">
-          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4">
               {CARDS.map((card, i) => (
                 <InfoCard key={card.title} {...card} index={i} />
               ))}
             </div>
+
+            {/* Education Timeline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-white font-bold text-base mb-4 flex items-center gap-2">
+                <FiBook size={16} className="text-violet-400" /> Education Timeline
+              </h3>
+              <div className="relative pl-5 space-y-4">
+                {/* Vertical line */}
+                <div className="absolute left-1.5 top-1 bottom-1 w-px bg-violet-500/20" />
+                {EDUCATION.map((edu, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className="relative glass rounded-xl p-4"
+                  >
+                    {/* Dot on timeline */}
+                    <div
+                      className="absolute -left-[17px] top-5 w-3 h-3 rounded-full border-2 border-[#080810]"
+                      style={{ background: edu.color }}
+                    />
+                    <div className="flex items-start justify-between gap-2 flex-wrap">
+                      <div>
+                        <p className="text-white font-semibold text-sm">{edu.degree}</p>
+                        <p className="text-slate-400 text-xs mt-0.5 flex items-center gap-1">
+                          <FiMapPin size={10} /> {edu.school}
+                        </p>
+                        <p className="text-slate-500 text-xs">{edu.board}</p>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <span
+                          className="text-xs font-bold px-2 py-0.5 rounded-full"
+                          style={{ background: `${edu.color}18`, color: edu.color }}
+                        >
+                          {edu.score}
+                        </span>
+                        <p className="text-slate-500 text-[11px] mt-1">{edu.period}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

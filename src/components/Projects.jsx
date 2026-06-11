@@ -7,7 +7,7 @@ const PROJECTS = [
     title: 'Raksh-Aid',
     tagline: 'Smart Emergency Response & Safety Platform',
     description:
-      'Raksh-Aid is a smart and accessible emergency response platform focused on real-time safety, rapid communication, and community support. Built to make critical help available instantly — from SOS alerts to mental health support — with a strong emphasis on accessibility and real-world impact.',
+      'Raksh-Aid is a smart emergency response platform focused on real-time safety, quick communication, and accessible support. It features SOS alerts with GPS tracking, voice-activated assistance, risk analysis, and emergency service integration. The platform also provides mental health support, volunteer assistance, and multi-language accessibility.',
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express.js', 'MySQL', 'Leaflet.js', 'OpenStreetMap', 'JWT', 'REST APIs'],
     github: 'https://github.com/itz-rakhi/Raksh-Aid',
     live: '#',
@@ -16,22 +16,13 @@ const PROJECTS = [
     icon: FiShield,
     iconBg: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
     iconLabel: 'Safety Platform',
-    features: [
-      'Real-time SOS alert system with GPS tracking',
-      'Voice-activated emergency assistance',
-      'Risk-level analysis (Low / High / Critical)',
-      'Nearby emergency services integration',
-      'Volunteer driver assistance system',
-      'Cyber help center & mental health support',
-      'Admin dashboard for live monitoring',
-      'Multi-language accessibility',
-    ],
+    features: [],
   },
   {
     title: 'Barista Cafe',
     tagline: 'Responsive Café Management & Ordering App',
     description:
-      'Barista Cafe is a responsive café management and ordering web application that provides an interactive user experience for browsing menus, managing orders, and exploring café services with a modern UI.',
+      'Barista Cafe is a responsive café management and ordering web application with an interactive and user-friendly interface. It allows users to browse menus, manage orders, and explore café services seamlessly. Built using Java Spring Framework, Hibernate, MySQL, REST APIs, Bootstrap, AJAX, and Git/GitHub.',
     tech: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Bootstrap', 'Java', 'Spring Framework', 'MySQL', 'Hibernate', 'REST APIs'],
     github: 'https://github.com/itz-rakhi/Barista-Cafe-Project/tree/master',
     live: '#',
@@ -40,16 +31,7 @@ const PROJECTS = [
     icon: FiCoffee,
     iconBg: 'linear-gradient(135deg, #d97706, #b45309)',
     iconLabel: 'Café App',
-    features: [
-      'Interactive menu browsing experience',
-      'Order management system',
-      'Responsive modern UI with Bootstrap',
-      'Java Spring Framework backend',
-      'Hibernate ORM with MySQL database',
-      'REST API integration',
-      'JSON & AJAX for dynamic content',
-      'Git/GitHub version control',
-    ],
+    features: [],
   },
   {
     title: 'Pizza Sales Dashboard',
@@ -64,16 +46,7 @@ const PROJECTS = [
     icon: FiBarChart2,
     iconBg: 'linear-gradient(135deg, #e11d48, #be123c)',
     iconLabel: 'BI Dashboard',
-    features: [
-      'Revenue & order tracking KPIs',
-      'Top-selling pizzas analysis',
-      'Customer trends visualization',
-      'Business performance metrics',
-      'DAX measures & calculations',
-      'Power Query data transformation',
-      'SQL-based data analysis',
-      'Dynamic interactive visualizations',
-    ],
+    features: [],
   },
 ];
 
@@ -111,10 +84,10 @@ function ProjectCard({ project, index }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
       whileHover={{ y: -8 }}
-      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-violet-500/30 transition-all duration-500 group flex flex-col"
+      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-violet-500/30 transition-all duration-500 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0"
     >
       {/* Banner */}
-      <div className={`relative h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`}>
+      <div className={`relative h-32 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`}>
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700 blur-2xl"
           style={{ background: `radial-gradient(circle at center, ${project.glowColor}, transparent)` }}
@@ -124,10 +97,10 @@ function ProjectCard({ project, index }) {
           className="relative z-10 flex flex-col items-center gap-3"
         >
           <div
-            className="w-20 h-20 rounded-3xl flex items-center justify-center shadow-2xl"
+            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl"
             style={{ background: project.iconBg }}
           >
-            <Icon size={38} className="text-white" />
+            <Icon size={26} className="text-white" />
           </div>
           <span className="text-white/60 text-xs font-medium tracking-widest uppercase">
             {project.iconLabel}
@@ -138,12 +111,12 @@ function ProjectCard({ project, index }) {
       </div>
 
       {/* Body */}
-      <div className="p-6 md:p-8 flex flex-col flex-1">
-        <h3 className="text-2xl font-extrabold text-white mb-1">{project.title}</h3>
-        <p className="font-medium mb-3 text-sm" style={{ color: project.glowColor }}>
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="text-lg font-extrabold text-white mb-0.5">{project.title}</h3>
+        <p className="font-medium mb-2 text-xs" style={{ color: project.glowColor }}>
           {project.tagline}
         </p>
-        <p className="text-slate-400 text-sm leading-relaxed mb-5">{project.description}</p>
+        <p className="text-slate-400 text-xs leading-relaxed mb-3">{project.description}</p>
 
         {/* Features */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-5">
@@ -159,11 +132,11 @@ function ProjectCard({ project, index }) {
         </div>
 
         {/* Tech badges */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-1.5 mb-3">
           {project.tech.map((t) => (
             <span
               key={t}
-              className="text-xs px-2.5 py-1 rounded-full font-semibold"
+              className="text-[11px] px-2 py-0.5 rounded-full font-semibold"
               style={{
                 background: `${BADGE_COLORS[t] || '#a78bfa'}15`,
                 color: BADGE_COLORS[t] || '#a78bfa',
@@ -183,7 +156,7 @@ function ProjectCard({ project, index }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl glass text-slate-200 hover:text-white hover:border-violet-500/30 text-sm font-semibold transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl glass text-slate-200 hover:text-white hover:border-violet-500/30 text-xs font-semibold transition-all"
           >
             <FiGithub size={15} /> View on GitHub
           </motion.a>
