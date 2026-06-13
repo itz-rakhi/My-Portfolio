@@ -139,19 +139,6 @@ function ProjectCard({ project, index }) {
         </p>
         <p className="text-slate-400 text-xs leading-relaxed mb-3">{project.description}</p>
 
-        {/* Features */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-5">
-          {project.features.map((f) => (
-            <div key={f} className="flex items-start gap-2 text-xs text-slate-400">
-              <span
-                className="w-1.5 h-1.5 rounded-full mt-1 flex-shrink-0"
-                style={{ background: project.glowColor }}
-              />
-              {f}
-            </div>
-          ))}
-        </div>
-
         {/* Tech badges */}
         <div className="flex flex-wrap gap-1.5 mb-3">
           {project.tech.map((t) => (
@@ -205,7 +192,8 @@ export default function Projects() {
   const inView = useInView(ref, { once: true });
 
   return (
-    <section id="projects" className="py-16 px-6">
+    <section id="projects" className="py-16 px-6 relative">
+      <div className="section-grid" />
       <div className="section-divider mb-6 -mt-4" />
       <div className="max-w-6xl mx-auto">
 

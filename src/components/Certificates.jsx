@@ -232,9 +232,7 @@ export default function Certificates() {
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
             Certifi<span className="gradient-text">cations</span>
           </h2>
-          <p className="text-slate-400 mt-3 text-sm max-w-lg mx-auto">
-            Professional certifications that validate my skills and commitment to continuous learning.
-          </p>
+
         </motion.div>
 
         {/* grid-cols-2 on mobile so all 3 appear in a row on wider phones, 3 cols on lg */}
@@ -251,3 +249,4 @@ export default function Certificates() {
     </section>
   );
 }
+

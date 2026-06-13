@@ -88,10 +88,7 @@ export default function Contact() {
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
             Get In <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-slate-400 mt-4 max-w-xl mx-auto">
-            I'm open to internships, collaborations, and full-time opportunities.
-            Feel free to reach out!
-          </p>
+
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8">
