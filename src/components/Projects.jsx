@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FiGithub, FiShield, FiCoffee, FiBarChart2 } from 'react-icons/fi';
+import { FiGithub, FiShield, FiCoffee, FiBarChart2, FiZap, FiExternalLink } from 'react-icons/fi';
 
 const PROJECTS = [
   {
@@ -34,6 +34,21 @@ const PROJECTS = [
     features: [],
   },
   {
+    title: 'KidSpark AI Landing Page',
+    tagline: 'AI & Robotics Workshop Platform | GEMA Education Technology',
+    description:
+      'KidSpark AI is a promotional website developed to showcase and manage registrations for an AI and Robotics workshop for school students. It introduces children to AI and Robotics through hands-on activities, guided projects, and interactive learning, helping them develop creativity, problem-solving, and future-ready skills.',
+    tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Vercel'],
+    github: null,
+    live: 'https://kid-spark-ai.vercel.app/',
+    gradient: 'from-emerald-600/25 via-teal-600/20 to-cyan-600/25',
+    glowColor: '#10b981',
+    icon: FiZap,
+    iconBg: 'linear-gradient(135deg, #10b981, #059669)',
+    iconLabel: 'EdTech Platform',
+    features: [],
+  },
+  {
     title: 'Pizza Sales Dashboard',
     tagline: 'Interactive Power BI Analytics Dashboard',
     description:
@@ -61,7 +76,12 @@ const BADGE_COLORS = {
   'OpenStreetMap': '#38bdf8',
   'JWT': '#f472b6',
   'REST APIs': '#a78bfa',
-  'React.js': '#61dafb',
+  'React 19': '#61dafb',
+  'TypeScript': '#3178c6',
+  'Framer Motion': '#ff0055',
+  'Express': '#94a3b8',
+  'MongoDB': '#47a248',
+  'Vercel': '#ffffff',
   'Bootstrap': '#7c3aed',
   'Java': '#f97316',
   'Spring Framework': '#86efac',
@@ -148,18 +168,32 @@ function ProjectCard({ project, index }) {
           ))}
         </div>
 
-        {/* GitHub button only */}
+        {/* Button */}
         <div className="flex mt-auto">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl glass text-slate-200 hover:text-white hover:border-violet-500/30 text-xs font-semibold transition-all"
-          >
-            <FiGithub size={15} /> View on GitHub
-          </motion.a>
+          {project.live && project.live !== '#' && !project.github ? (
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-white transition-all"
+              style={{ background: project.iconBg }}
+            >
+              <FiExternalLink size={13} /> Live Demo
+            </motion.a>
+          ) : (
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl glass text-slate-200 hover:text-white hover:border-violet-500/30 text-xs font-semibold transition-all"
+            >
+              <FiGithub size={13} /> View on GitHub
+            </motion.a>
+          )}
         </div>
       </div>
     </motion.div>
