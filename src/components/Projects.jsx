@@ -104,7 +104,7 @@ function ProjectCard({ project, index }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
       whileHover={{ y: -8 }}
-      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-violet-500/30 transition-all duration-500 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0"
+      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-violet-500/30 transition-all duration-500 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0 h-full"
     >
       {/* Banner */}
       <div className={`relative h-32 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`}>
@@ -226,7 +226,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Project grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {PROJECTS.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}
