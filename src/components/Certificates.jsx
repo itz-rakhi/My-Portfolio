@@ -4,7 +4,7 @@ import { FiAward, FiExternalLink, FiX, FiCalendar, FiBookOpen } from 'react-icon
 
 import caddImg from '../assets/cert-cadd.jpeg';
 import internshalaImg from '../assets/cert-internshala.jpeg';
-// import udemyImg from '../assets/cert-udemy.jpeg';
+import udemyImg from '../assets/udemy.jpg';
 
 const CERTS = [
   {
@@ -43,8 +43,8 @@ const CERTS = [
     skills: ['Python', 'Statistics', 'Power BI', 'SQL', 'Tableau', 'MS Excel', 'ETL', 'Snowflake', 'Feature Engineering'],
     color: '#a78bfa',
     gradient: 'from-violet-600/20 via-indigo-600/15 to-purple-600/20',
-    image: null, // Save as src/assets/cert-udemy.jpeg then: import udemyImg and set image: udemyImg
-    imageName: 'cert-udemy.jpeg',
+    image: udemyImg,
+    imageName: 'udemy.jpg',
   },
 ];
 
