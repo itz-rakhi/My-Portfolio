@@ -82,7 +82,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-violet-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
+          <p className="text-zinc-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
             Let's connect
           </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
@@ -130,7 +130,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-xs text-slate-500 uppercase tracking-widest font-medium">{label}</p>
-                  <p className="text-slate-200 text-sm mt-0.5 group-hover:text-violet-300 transition-colors break-all">
+                  <p className="text-slate-200 text-sm mt-0.5 group-hover:text-zinc-300 transition-colors break-all">
                     {value}
                   </p>
                 </div>
@@ -163,7 +163,7 @@ export default function Contact() {
                     placeholder={placeholder}
                     value={form[name]}
                     onChange={handleChange}
-                    className="w-full bg-white/4 border border-white/8 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/50 focus:bg-white/6 transition-all text-sm"
+                    className="w-full bg-white/4 border border-white/8 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-zinc-500/50 focus:bg-white/6 transition-all text-sm"
                   />
                 </div>
               ))}
@@ -179,7 +179,7 @@ export default function Contact() {
                 placeholder="Project collaboration / Internship opportunity..."
                 value={form.subject}
                 onChange={handleChange}
-                className="w-full bg-white/4 border border-white/8 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/50 focus:bg-white/6 transition-all text-sm"
+                className="w-full bg-white/4 border border-white/8 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-zinc-500/50 focus:bg-white/6 transition-all text-sm"
               />
             </div>
 
@@ -194,12 +194,12 @@ export default function Contact() {
                 placeholder="Tell me about your project or opportunity..."
                 value={form.message}
                 onChange={handleChange}
-                className="w-full bg-white/4 border border-white/8 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/50 focus:bg-white/6 transition-all text-sm resize-none"
+                className="w-full bg-white/4 border border-white/8 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-zinc-500/50 focus:bg-white/6 transition-all text-sm resize-none"
               />
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.02, boxShadow: '0 0 25px rgba(124,58,237,0.4)' }}
+              whileHover={{ scale: 1.02, boxShadow: '0 0 25px rgba(220,38,38,0.4)' }}
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={loading}
@@ -207,7 +207,7 @@ export default function Contact() {
               style={{
                 background: sent
                   ? 'linear-gradient(135deg, #059669, #10b981)'
-                  : 'linear-gradient(135deg, #7c3aed, #4f46e5, #0ea5e9)',
+                  : 'linear-gradient(135deg, #dc2626, #b91c1c)',
               }}
             >
               {sent ? (

@@ -113,7 +113,7 @@ function CertCard({ cert, index, onView }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       whileHover={{ y: -6 }}
-      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-violet-500/30 transition-all duration-300 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0"
+      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-zinc-500/30 transition-all duration-300 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0"
     >
       {/* Banner */}
       <div
@@ -224,7 +224,7 @@ export default function Certificates() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-violet-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
+          <p className="text-zinc-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
             My Achievements
           </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">

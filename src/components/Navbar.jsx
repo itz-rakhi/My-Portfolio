@@ -36,12 +36,12 @@ export default function Navbar() {
   const navBg = scrolled
     ? dark
       ? 'glass shadow-xl shadow-violet-950/30'
-      : 'bg-white/80 backdrop-blur-xl shadow-lg shadow-violet-100/50 border-b border-violet-100'
+      : 'bg-white/80 backdrop-blur-xl shadow-lg shadow-zinc-100/50 border-b border-zinc-100'
     : 'bg-transparent';
 
-  const linkActive = dark ? 'text-violet-400' : 'text-violet-600';
+  const linkActive = 'text-red-400';
   const linkIdle   = dark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-500 hover:text-slate-800';
-  const pillBg     = dark ? 'bg-violet-500/10 border border-violet-500/20' : 'bg-violet-100 border border-violet-300/50';
+  const pillBg     = 'bg-red-500/10 border border-red-500/20';
 
   return (
     <motion.nav
@@ -92,7 +92,7 @@ export default function Navbar() {
             className={`p-2.5 rounded-full transition-all duration-300 ${
               dark
                 ? 'glass text-yellow-300 hover:text-yellow-200 hover:border-yellow-400/30'
-                : 'bg-slate-100 border border-slate-200 text-slate-600 hover:bg-violet-50 hover:border-violet-300'
+                : 'bg-slate-100 border border-slate-200 text-slate-600 hover:bg-zinc-50 hover:border-zinc-300'
             }`}
           >
             <AnimatePresence mode="wait">
@@ -110,7 +110,7 @@ export default function Navbar() {
 
           {/* Mobile menu toggle */}
           <button
-            className={`md:hidden transition-colors p-1 ${dark ? 'text-slate-300 hover:text-violet-400' : 'text-slate-600 hover:text-violet-600'}`}
+            className={`md:hidden transition-colors p-1 ${dark ? 'text-slate-300 hover:text-zinc-400' : 'text-slate-600 hover:text-zinc-600'}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -128,7 +128,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
             className={`md:hidden overflow-hidden border-t ${
-              dark ? 'glass border-white/5' : 'bg-white/90 backdrop-blur-xl border-violet-100'
+              dark ? 'glass border-white/5' : 'bg-white/90 backdrop-blur-xl border-zinc-100'
             }`}
           >
             <ul className="flex flex-col px-6 py-4 gap-1">
@@ -138,7 +138,7 @@ export default function Navbar() {
                     onClick={() => scrollTo(link)}
                     className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       active === link
-                        ? dark ? 'text-violet-400 bg-violet-500/10' : 'text-violet-600 bg-violet-50'
+                        ? 'text-red-400 bg-red-500/10'
                         : dark ? 'text-slate-400 hover:text-slate-200 hover:bg-white/5' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-50'
                     }`}
                   >
@@ -153,3 +153,4 @@ export default function Navbar() {
     </motion.nav>
   );
 }
+

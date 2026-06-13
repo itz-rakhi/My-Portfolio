@@ -12,9 +12,9 @@ const PROJECTS = [
     github: 'https://github.com/itz-rakhi/Raksh-Aid',
     live: '#',
     gradient: 'from-violet-600/25 via-indigo-600/20 to-sky-600/25',
-    glowColor: '#7c3aed',
+    glowColor: '#52525b',
     icon: FiShield,
-    iconBg: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
+    iconBg: 'linear-gradient(135deg, #52525b, #3f3f46)',
     iconLabel: 'Safety Platform',
     features: [],
   },
@@ -82,7 +82,7 @@ const BADGE_COLORS = {
   'Express': '#94a3b8',
   'MongoDB': '#47a248',
   'Vercel': '#ffffff',
-  'Bootstrap': '#7c3aed',
+  'Bootstrap': '#52525b',
   'Java': '#f97316',
   'Spring Framework': '#86efac',
   'Hibernate': '#6366f1',
@@ -104,7 +104,7 @@ function ProjectCard({ project, index }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
       whileHover={{ y: -8 }}
-      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-violet-500/30 transition-all duration-500 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0 h-full"
+      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-zinc-500/30 transition-all duration-500 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0 h-full"
     >
       {/* Banner */}
       <div className={`relative h-32 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`}>
@@ -177,8 +177,7 @@ function ProjectCard({ project, index }) {
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-white transition-all"
-              style={{ background: project.iconBg }}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl glass text-slate-200 hover:text-white hover:border-zinc-500/30 text-xs font-semibold transition-all"
             >
               <FiExternalLink size={13} /> Live Demo
             </motion.a>
@@ -189,7 +188,7 @@ function ProjectCard({ project, index }) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-xl glass text-slate-200 hover:text-white hover:border-violet-500/30 text-xs font-semibold transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl glass text-slate-200 hover:text-white hover:border-zinc-500/30 text-xs font-semibold transition-all"
             >
               <FiGithub size={13} /> View on GitHub
             </motion.a>
@@ -217,7 +216,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-violet-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
+          <p className="text-zinc-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
             What I've built
           </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">

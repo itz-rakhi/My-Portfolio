@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FiBook, FiTarget, FiCode, FiAward, FiMapPin } from 'react-icons/fi';
+import { FiBook, FiTarget, FiAward, FiMapPin } from 'react-icons/fi';
 import photo from '../assets/photo.jpeg';
 
 const EDUCATION = [
@@ -10,7 +10,7 @@ const EDUCATION = [
     board: 'Maharashtra Board',
     period: 'Jun 2020',
     score: '89.60%',
-    color: '#f472b6',
+    color: '#fca5a5',
   },
   {
     degree: 'Higher Secondary Certificate (12th)',
@@ -18,15 +18,15 @@ const EDUCATION = [
     board: 'Maharashtra Board',
     period: 'Jun 2022',
     score: '82.17%',
-    color: '#38bdf8',
+    color: '#ef4444',
   },
   {
     degree: 'B.E. in Computer Engineering',
     school: 'Dilkap Research Institute of Engineering And Management Studies',
     board: 'University of Mumbai',
-    period: 'Oct 2022 – Jun 2026',
+    period: 'Oct 2022 - Jun 2026',
     score: 'Pursuing',
-    color: '#a78bfa',
+    color: '#991b1b',
   },
 ];
 
@@ -49,7 +49,7 @@ const CARDS = [
 
 const STATS = [
   { value: '2+', label: 'Years Coding' },
-  { value: '5+', label: 'Projects Built' },
+  { value: '10+', label: 'Projects Built' },
   { value: '15+', label: 'Technologies' },
   { value: '2026', label: 'Graduating' },
 ];
@@ -85,7 +85,6 @@ export default function About() {
       <div className="section-divider mb-6 -mt-4" />
       <div className="max-w-6xl mx-auto">
 
-        {/* Section header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -93,7 +92,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-violet-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
+          <p className="text-red-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
             Who I Am
           </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
@@ -112,34 +111,23 @@ export default function About() {
             className="lg:col-span-2 flex justify-center"
           >
             <div className="relative w-full max-w-sm">
-              {/* Glow */}
-              <div
-                className="absolute -inset-1 rounded-3xl blur-2xl opacity-30 pointer-events-none"
-                style={{ background: 'linear-gradient(135deg, #7c3aed, #0ea5e9)' }}
-              />
-              <div className="relative glass rounded-3xl p-8 text-center">
-                {/* Avatar */}
-                <div className="relative w-32 h-32 mx-auto mb-5">
-                  {/* Glowing ring around photo */}
-                  <div
-                    className="absolute -inset-1 rounded-full blur-sm opacity-70"
-                    style={{ background: 'linear-gradient(135deg, #7c3aed, #0ea5e9)' }}
-                  />
+              <div className="rounded-3xl overflow-hidden shadow-xl">
+                {/* Red filled top */}
+                <div className="bg-gradient-to-br from-red-600 to-red-800 px-8 pt-8 pb-6 text-center">
                   <img
                     src={photo}
                     alt="Rakhi Samant"
-                    className="relative w-32 h-32 rounded-full object-cover object-top border-2 border-violet-500/40 shadow-2xl"
+                    className="w-32 h-32 rounded-full object-cover object-top border-4 border-white/30 shadow-xl mx-auto mb-4"
                   />
+                  <h3 className="text-2xl font-bold text-white profile-name mb-1">Rakhi Avadut Samant</h3>
+                  <p className="text-red-200 text-sm font-medium mb-1">Computer Engineering Student</p>
+                  <p className="text-red-300 text-xs">Mumbai University · 2022–2026</p>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-1">Rakhi Avadut Samant</h3>
-                <p className="text-violet-400 text-sm mb-1 font-medium">Computer Engineering Student</p>
-                <p className="text-slate-500 text-xs mb-6">Mumbai University · 2022–2026</p>
-
                 {/* Stats */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 bg-white/5 border-t border-red-500/20">
                   {STATS.map(({ value, label }) => (
-                    <div key={label} className="glass rounded-xl py-3 px-2">
-                      <div className="text-lg font-bold gradient-text">{value}</div>
+                    <div key={label} className="py-4 px-2 text-center border border-red-500/10">
+                      <div className="text-lg font-bold text-red-400">{value}</div>
                       <div className="text-xs text-slate-500 mt-0.5">{label}</div>
                     </div>
                   ))}
@@ -164,11 +152,10 @@ export default function About() {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-white font-bold text-base mb-4 flex items-center gap-2">
-                <FiBook size={16} className="text-violet-400" /> Education Timeline
+                <FiBook size={16} className="text-red-400" /> Education Timeline
               </h3>
               <div className="relative pl-5 space-y-4">
-                {/* Vertical line */}
-                <div className="absolute left-1.5 top-1 bottom-1 w-px bg-violet-500/20" />
+                <div className="absolute left-1.5 top-1 bottom-1 w-px bg-red-500/20" />
                 {EDUCATION.map((edu, i) => (
                   <motion.div
                     key={i}
@@ -178,9 +165,8 @@ export default function About() {
                     transition={{ duration: 0.4, delay: i * 0.1 }}
                     className="relative glass rounded-xl p-4"
                   >
-                    {/* Dot on timeline */}
                     <div
-                      className="absolute -left-[17px] top-5 w-3 h-3 rounded-full border-2 border-[#080810]"
+                      className="absolute -left-[17px] top-5 w-3 h-3 rounded-full border-2 border-[#0d0205]"
                       style={{ background: edu.color }}
                     />
                     <div className="flex items-start justify-between gap-2 flex-wrap">

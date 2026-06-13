@@ -61,7 +61,7 @@ const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
   height: Math.random() * 4 + 2,
   top: `${Math.random() * 100}%`,
   left: `${Math.random() * 100}%`,
-  background: i % 3 === 0 ? '#a78bfa' : i % 3 === 1 ? '#38bdf8' : '#818cf8',
+  background: i % 3 === 0 ? '#fca5a5' : i % 3 === 1 ? '#ef4444' : '#991b1b',
   duration: Math.random() * 4 + 3,
   delay: Math.random() * 3,
 }));
@@ -77,29 +77,31 @@ export default function Hero() {
       {/* Animated gradient orbs */}
       <motion.div
         className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }}
+        style={{ background: 'radial-gradient(circle, #dc2626, transparent)' }}
         animate={{ scale: [1, 1.3, 1], x: [0, 40, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
         className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-15 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #0ea5e9, transparent)' }}
+        style={{ background: 'radial-gradient(circle, #b91c1c, transparent)' }}
         animate={{ scale: [1, 1.2, 1], x: [0, -30, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
       />
       <motion.div
         className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full blur-3xl opacity-10 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #818cf8, transparent)' }}
+        style={{ background: 'radial-gradient(circle, #7f1d1d, transparent)' }}
         animate={{ scale: [1, 1.4, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
       />
 
       {/* Grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'linear-gradient(#a78bfa 1px, transparent 1px), linear-gradient(90deg, #a78bfa 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(220,38,38,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(220,38,38,0.25) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
+          maskImage: 'radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%)',
         }}
       />
 
@@ -114,7 +116,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-8 text-sm text-violet-300 border border-violet-500/20"
+          className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-8 text-sm text-zinc-300 border border-zinc-500/20"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           Open to opportunities
@@ -148,7 +150,7 @@ export default function Hero() {
           className="text-xl md:text-2xl text-slate-300 font-semibold mb-6 h-8"
         >
           <span className="gradient-text">{typed}</span>
-          <span className="animate-pulse text-violet-400 ml-0.5">|</span>
+          <span className="animate-pulse text-zinc-400 ml-0.5">|</span>
         </motion.div>
 
         {/* Description */}
@@ -175,7 +177,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(124,58,237,0.5)' }}
             whileTap={{ scale: 0.97 }}
             onClick={() => scrollTo('projects')}
-            className="flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-white gradient-bg shadow-lg shadow-violet-900/40 transition-all"
+            className="flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-white gradient-bg shadow-lg shadow-zinc-900/40 transition-all"
           >
             View Projects <FiArrowRight />
           </motion.button>
@@ -184,7 +186,7 @@ export default function Hero() {
             whileTap={{ scale: 0.97 }}
             href="/resume.pdf"
             download
-            className="flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold glass text-slate-200 hover:text-white hover:border-violet-500/40 transition-all"
+            className="flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold glass text-slate-200 hover:text-white hover:border-zinc-500/40 transition-all"
           >
             <FiDownload size={16} /> Download Resume
           </motion.a>
@@ -205,7 +207,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, y: -4 }}
               whileTap={{ scale: 0.9 }}
-              className="glass p-3.5 rounded-full text-slate-400 hover:text-violet-400 hover:border-violet-500/30 transition-all duration-300"
+              className="glass p-3.5 rounded-full text-slate-400 hover:text-zinc-400 hover:border-zinc-500/30 transition-all duration-300"
               aria-label={label}
             >
               <Icon size={20} />
@@ -220,9 +222,9 @@ export default function Hero() {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.8, repeat: Infinity }}
       >
-        <div className="w-5 h-9 rounded-full border-2 border-violet-500/40 flex justify-center pt-1.5">
+        <div className="w-5 h-9 rounded-full border-2 border-zinc-500/40 flex justify-center pt-1.5">
           <motion.div
-            className="w-1 h-2 rounded-full bg-violet-400"
+            className="w-1 h-2 rounded-full bg-zinc-400"
             animate={{ opacity: [1, 0, 1] }}
             transition={{ duration: 1.8, repeat: Infinity }}
           />
@@ -232,3 +234,4 @@ export default function Hero() {
     </section>
   );
 }
+
