@@ -12,9 +12,9 @@ const PROJECTS = [
     github: 'https://github.com/itz-rakhi/Raksh-Aid',
     live: '#',
     gradient: 'from-violet-600/25 via-indigo-600/20 to-sky-600/25',
-    glowColor: '#52525b',
+    glowColor: '#818cf8',
     icon: FiShield,
-    iconBg: 'linear-gradient(135deg, #52525b, #3f3f46)',
+    iconBg: 'linear-gradient(135deg, #6366f1, #4f46e5)',
     iconLabel: 'Safety Platform',
     features: [],
   },
@@ -35,7 +35,8 @@ const PROJECTS = [
   },
   {
     title: 'KidSpark AI Landing Page',
-    tagline: 'AI & Robotics Workshop Platform | GEMA Education Technology',
+    tagline: 'AI & Robotics Workshop Platform |',
+    taglineSuffix: ' GEMA Education Technology',
     description:
       'KidSpark AI is a promotional website developed to showcase and manage registrations for an AI and Robotics workshop for school students. It introduces children to AI and Robotics through hands-on activities, guided projects, and interactive learning, helping them develop creativity, problem-solving, and future-ready skills.',
     tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Vercel'],
@@ -104,10 +105,10 @@ function ProjectCard({ project, index }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
       whileHover={{ y: -8 }}
-      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-zinc-500/30 transition-all duration-500 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0 h-full"
+      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-zinc-500/30 transition-all duration-500 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0 h-full text-[0.92rem]"
     >
       {/* Banner */}
-      <div className={`relative h-32 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`}>
+      <div className={`relative h-24 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden flex-shrink-0`}>
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700 blur-2xl"
           style={{ background: `radial-gradient(circle at center, ${project.glowColor}, transparent)` }}
@@ -117,10 +118,10 @@ function ProjectCard({ project, index }) {
           className="relative z-10 flex flex-col items-center gap-3"
         >
           <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl"
+            className="w-11 h-11 rounded-2xl flex items-center justify-center shadow-2xl"
             style={{ background: project.iconBg }}
           >
-            <Icon size={26} className="text-white" />
+            <Icon size={20} className="text-white" />
           </div>
           <span className="text-white/60 text-xs font-medium tracking-widest uppercase">
             {project.iconLabel}
@@ -131,10 +132,10 @@ function ProjectCard({ project, index }) {
       </div>
 
       {/* Body */}
-      <div className="p-4 flex flex-col flex-1">
+      <div className="p-3 flex flex-col flex-1">
         <h3 className="text-lg font-extrabold text-white mb-0.5">{project.title}</h3>
         <p className="font-medium mb-2 text-xs" style={{ color: project.glowColor }}>
-          {project.tagline}
+          {project.tagline}{project.taglineSuffix && <span style={{ color: '#111827' }}>{project.taglineSuffix}</span>}
         </p>
         <p className="text-slate-400 text-xs leading-relaxed mb-3">{project.description}</p>
 

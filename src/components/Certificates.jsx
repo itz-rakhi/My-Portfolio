@@ -63,18 +63,20 @@ function ImageModal({ cert, onClose }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.85, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-        className="relative max-w-4xl w-full glass rounded-3xl overflow-hidden"
+        className="relative max-w-xl w-full rounded-3xl overflow-hidden"
+        style={{ background: '#ffffff', border: '1px solid rgba(0,0,0,0.1)' }}
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 glass p-2 rounded-full text-slate-300 hover:text-white transition-colors"
+          className="absolute top-4 right-4 z-10 p-2 rounded-full transition-colors text-slate-600 hover:text-slate-900"
+          style={{ background: 'rgba(0,0,0,0.06)', border: '1px solid rgba(0,0,0,0.1)' }}
         >
           <FiX size={20} />
         </button>
 
         {cert.image ? (
-          <img src={cert.image} alt={cert.title} className="w-full h-auto max-h-[80vh] object-contain" />
+          <img src={cert.image} alt={cert.title} className="w-full h-auto max-h-[50vh] object-contain" />
         ) : (
           <div className={`w-full h-80 bg-gradient-to-br ${cert.gradient} flex flex-col items-center justify-center gap-4`}>
             <FiAward size={64} style={{ color: cert.color }} />
@@ -86,7 +88,7 @@ function ImageModal({ cert, onClose }) {
         )}
 
         <div className="p-6">
-          <h3 className="text-xl font-bold text-white mb-1">{cert.title}</h3>
+          <h3 className="text-xl font-bold mb-1" style={{ color: '#111827' }}>{cert.title}</h3>
           <p className="text-sm font-medium mb-3" style={{ color: cert.color }}>{cert.issuer} · {cert.date}</p>
           <div className="flex flex-wrap gap-2">
             {cert.skills.map((s) => (
