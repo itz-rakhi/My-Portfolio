@@ -5,6 +5,8 @@ import { FiAward, FiExternalLink, FiX, FiCalendar, FiBookOpen } from 'react-icon
 import caddImg from '../assets/cert-cadd.jpeg';
 import internshalaImg from '../assets/cert-internshala.jpeg';
 import udemyImg from '../assets/udemy.jpg';
+import dataAnalyticsImg from '../assets/data analytics.jpg';
+import ciscoImg from '../assets/Cisco.jpg';
 
 const CERTS = [
   {
@@ -46,9 +48,21 @@ const CERTS = [
     image: udemyImg,
     imageName: 'udemy.jpg',
   },
+  {
+    id: 4,
+    title: 'Data Analytics Essentials',
+    issuer: 'Cisco Networking Academy',
+    date: '2025',
+    description:
+      'Certified training in Data Analytics Essentials covering fundamentals of data analytics including data collection, data cleaning, data preprocessing, data visualization, SQL basics, and real-world data analysis using Excel and Tableau.',
+    skills: ['Data Collection', 'Data Cleaning & Preprocessing', 'Data Visualization (Excel, Tableau)', 'SQL Basics', 'Data-driven Decision Making'],
+    color: '#f472b6',
+    gradient: 'from-pink-600/20 via-rose-600/15 to-red-600/20',
+    image: dataAnalyticsImg,
+    extraImage: ciscoImg,
+    imageName: 'data analytics.jpg',
+  },
 ];
-
-/* Full-screen image modal */
 function ImageModal({ cert, onClose }) {
   return (
     <motion.div
@@ -76,7 +90,16 @@ function ImageModal({ cert, onClose }) {
         </button>
 
         {cert.image ? (
-          <img src={cert.image} alt={cert.title} className="w-full h-auto max-h-[50vh] object-contain" />
+          <>
+            {cert.extraImage ? (
+              <div className="flex gap-1">
+                <img src={cert.image} alt={cert.title} className="w-1/2 h-48 object-contain bg-black/5" />
+                <img src={cert.extraImage} alt={`${cert.title} - Cisco`} className="w-1/2 h-48 object-contain bg-black/5 border-l border-white/10" />
+              </div>
+            ) : (
+              <img src={cert.image} alt={cert.title} className="w-full h-auto max-h-[45vh] object-contain" />
+            )}
+          </>
         ) : (
           <div className={`w-full h-80 bg-gradient-to-br ${cert.gradient} flex flex-col items-center justify-center gap-4`}>
             <FiAward size={64} style={{ color: cert.color }} />
