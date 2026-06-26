@@ -59,6 +59,18 @@ import baristaImg from '../assets/baristacafe.png';
 
 const PROJECTS = [
   {
+    title: 'Raksh-Aid',
+    tagline: 'Smart Emergency Response & Safety Platform',
+    description:
+      'Raksh-Aid is a smart emergency response platform focused on real-time safety, quick communication, and accessible support. It features SOS alerts with GPS tracking, voice-activated assistance, risk analysis, and emergency service integration.',
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express.js', 'MySQL', 'Leaflet.js', 'OpenStreetMap', 'JWT', 'REST APIs'],
+    github: 'https://github.com/itz-rakhi/Raksh-Aid',
+    live: '#',
+    glowColor: '#818cf8',
+    iconBg: 'linear-gradient(135deg, #6366f1, #4f46e5)',
+    image: rakshaidImg,
+  },
+  {
     title: 'My Portfolio',
     tagline: 'Personal Portfolio Website',
     description:
@@ -72,16 +84,17 @@ const PROJECTS = [
     image: null,
   },
   {
-    title: 'Raksh-Aid',
-    tagline: 'Smart Emergency Response & Safety Platform',
+    title: 'KidSpark AI Landing Page',
+    tagline: 'AI & Robotics Workshop Platform',
+    taglineSuffix: ' | GEMA Education Technology',
     description:
-      'Raksh-Aid is a smart emergency response platform focused on real-time safety, quick communication, and accessible support. It features SOS alerts with GPS tracking, voice-activated assistance, risk analysis, and emergency service integration.',
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express.js', 'MySQL', 'Leaflet.js', 'OpenStreetMap', 'JWT', 'REST APIs'],
-    github: 'https://github.com/itz-rakhi/Raksh-Aid',
-    live: '#',
-    glowColor: '#818cf8',
-    iconBg: 'linear-gradient(135deg, #6366f1, #4f46e5)',
-    image: rakshaidImg,
+      'KidSpark AI is a promotional website to showcase and manage registrations for an AI and Robotics workshop for school students, helping them develop creativity, problem-solving, and future-ready skills.',
+    tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Vercel'],
+    github: null,
+    live: 'https://kid-spark-ai.vercel.app/',
+    glowColor: '#10b981',
+    iconBg: 'linear-gradient(135deg, #10b981, #059669)',
+    image: kidsparkImg,
   },
   {
     title: 'Barista Cafe',
@@ -95,19 +108,6 @@ const PROJECTS = [
     icon: FiCoffee,
     iconBg: 'linear-gradient(135deg, #d97706, #b45309)',
     image: baristaImg,
-  },
-  {
-    title: 'KidSpark AI Landing Page',
-    tagline: 'AI & Robotics Workshop Platform',
-    taglineSuffix: ' | GEMA Education Technology',
-    description:
-      'KidSpark AI is a promotional website to showcase and manage registrations for an AI and Robotics workshop for school students, helping them develop creativity, problem-solving, and future-ready skills.',
-    tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Vercel'],
-    github: null,
-    live: 'https://kid-spark-ai.vercel.app/',
-    glowColor: '#10b981',
-    iconBg: 'linear-gradient(135deg, #10b981, #059669)',
-    image: kidsparkImg,
   },
 ];
 
