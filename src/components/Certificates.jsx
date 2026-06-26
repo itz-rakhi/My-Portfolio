@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { FiAward, FiExternalLink, FiX, FiCalendar, FiBookOpen } from 'react-icons/fi';
 
@@ -7,6 +7,59 @@ import internshalaImg from '../assets/cert-internshala.jpeg';
 import udemyImg from '../assets/udemy.jpg';
 import dataAnalyticsImg from '../assets/data analytics.jpg';
 import ciscoImg from '../assets/Cisco.jpg';
+import powerbiImg from '../assets/3hourpowerbi.png';
+
+function DraggableScrollBar({ scrollRef, progress }) {
+  const trackRef = useRef(null);
+  const dragging = useRef(false);
+  const isLight = document.body.classList.contains('light');
+
+  const getProgress = (clientX) => {
+    const track = trackRef.current;
+    if (!track) return 0;
+    const { left, width } = track.getBoundingClientRect();
+    return Math.min(1, Math.max(0, (clientX - left) / width));
+  };
+
+  const applyScroll = (p) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollLeft = p * (el.scrollWidth - el.clientWidth);
+  };
+
+  const onMouseDown = (e) => {
+    dragging.current = true;
+    applyScroll(getProgress(e.clientX));
+    const onMove = (e) => { if (dragging.current) applyScroll(getProgress(e.clientX)); };
+    const onUp = () => { dragging.current = false; window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  };
+
+  const onTrackClick = (e) => { applyScroll(getProgress(e.clientX)); };
+
+  return (
+    <div className="flex justify-start mt-3">
+      <div
+        ref={trackRef}
+        onMouseDown={onMouseDown}
+        onClick={onTrackClick}
+        className="relative w-24 h-1 rounded-full cursor-pointer"
+        style={{ background: isLight ? '#d1d5db' : 'rgba(255,255,255,0.08)' }}
+      >
+        <div
+          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full pointer-events-none"
+          style={{
+            left: `calc(${progress * 100}% - ${progress * 12}px)`,
+            background: isLight ? '#4b5563' : '#dc2626',
+            boxShadow: isLight ? 'none' : '0 0 8px rgba(220,38,38,0.6)',
+            transition: dragging.current ? 'none' : 'left 0.15s',
+          }}
+        />
+      </div>
+    </div>
+  );
+}
 
 const CERTS = [
   {
@@ -62,7 +115,21 @@ const CERTS = [
     extraImage: ciscoImg,
     imageName: 'data analytics.jpg',
   },
+  {
+    id: 5,
+    title: 'Data to Dashboard in Power BI',
+    issuer: 'SkillCourse by Satish Dhawale',
+    date: '2025',
+    description:
+      'Successfully completed the "Data to Dashboard in Power BI – 3 Hours Live Workshop". Built an Executive Sales Dashboard in Power BI, transforming raw sales data into actionable business insights through interactive visualizations and KPI tracking.',
+    skills: ['Power BI', 'DAX', 'KPI Tracking', 'Data Visualization', 'Executive Dashboard', 'Sales Analytics'],
+    color: '#f59e0b',
+    gradient: 'from-amber-600/20 via-yellow-600/15 to-orange-600/20',
+    image: powerbiImg,
+    imageName: '3hourpowerbi.png',
+  },
 ];
+
 function ImageModal({ cert, onClose }) {
   return (
     <motion.div
@@ -138,7 +205,7 @@ function CertCard({ cert, index, onView }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       whileHover={{ y: -6 }}
-      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-zinc-500/30 transition-all duration-300 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0"
+      className="glass rounded-3xl overflow-hidden border border-white/8 hover:border-zinc-500/30 transition-all duration-300 group flex flex-col opacity-60 hover:opacity-100 grayscale-[50%] hover:grayscale-0 h-full"
     >
       {/* Banner */}
       <div
@@ -201,23 +268,6 @@ function CertCard({ cert, index, onView }) {
         <h3 className="text-base font-bold text-white mb-1.5 leading-snug">{cert.title}</h3>
         <p className="text-slate-400 text-xs leading-relaxed mb-3 flex-1">{cert.description}</p>
 
-        <div className="flex flex-wrap gap-1 mb-3">
-          {cert.skills.slice(0, 4).map((s) => (
-            <span
-              key={s}
-              className="text-[11px] px-2 py-0.5 rounded-full font-medium"
-              style={{ background: `${cert.color}12`, color: cert.color, border: `1px solid ${cert.color}22` }}
-            >
-              {s}
-            </span>
-          ))}
-          {cert.skills.length > 4 && (
-            <span className="text-[11px] px-2 py-0.5 rounded-full font-medium text-slate-500 glass">
-              +{cert.skills.length - 4} more
-            </span>
-          )}
-        </div>
-
         <motion.button
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
@@ -236,6 +286,15 @@ export default function Certificates() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   const [selected, setSelected] = useState(null);
+  const scrollRef = useRef(null);
+  const [progress, setProgress] = useState(0);
+
+  const onScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setProgress(max > 0 ? el.scrollLeft / max : 0);
+  }, []);
 
   return (
     <section id="certificates" className="py-16 px-6">
@@ -249,21 +308,24 @@ export default function Certificates() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-zinc-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
-            My Achievements
-          </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
             Certifi<span className="gradient-text">cations</span>
           </h2>
-
         </motion.div>
 
-        {/* grid-cols-2 on mobile so all 3 appear in a row on wider phones, 3 cols on lg */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div
+          ref={scrollRef}
+          onScroll={onScroll}
+          className="scroll-row flex gap-5 overflow-x-auto pb-4"
+        >
           {CERTS.map((cert, i) => (
-            <CertCard key={cert.id} cert={cert} index={i} onView={setSelected} />
+            <div key={cert.id} className="flex-shrink-0 w-72 h-[420px]">
+              <CertCard cert={cert} index={i} onView={setSelected} />
+            </div>
           ))}
         </div>
+
+        <DraggableScrollBar scrollRef={scrollRef} progress={progress} />
       </div>
 
       <AnimatePresence>

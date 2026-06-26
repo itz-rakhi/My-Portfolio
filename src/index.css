@@ -49,6 +49,8 @@
   .gradient-bg {
     background: linear-gradient(135deg, #dc2626, #b91c1c, #7f1d1d);
   }
+  .scroll-row { scrollbar-width: none; }
+  .scroll-row::-webkit-scrollbar { display: none; }
   .section-divider {
     background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.4), transparent);
     height: 1px;

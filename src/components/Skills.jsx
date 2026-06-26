@@ -129,9 +129,6 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-zinc-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
-            What I work with
-          </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
             My <span className="gradient-text">Skills</span>
           </h2>

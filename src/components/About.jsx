@@ -92,9 +92,6 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-zinc-400 text-xs font-bold tracking-[0.3em] uppercase mb-3">
-            Who I Am
-          </p>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
             About <span className="gradient-text">Me</span>
           </h2>
