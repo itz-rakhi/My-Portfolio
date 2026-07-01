@@ -1,5 +1,5 @@
 import { useRef, useCallback, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 
 function DraggableScrollBar({ scrollRef, progress }) {
   const trackRef = useRef(null);
@@ -52,10 +52,17 @@ function DraggableScrollBar({ scrollRef, progress }) {
     </div>
   );
 }
-import { FiGithub, FiCoffee, FiBarChart2, FiExternalLink, FiUser } from 'react-icons/fi';
+import { FiGithub, FiCoffee, FiBarChart2, FiExternalLink, FiUser, FiImage, FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import rakshaidImg from '../assets/rakshaid.png';
 import kidsparkImg from '../assets/kidspark.png';
 import baristaImg from '../assets/baristacafe.png';
+import rapidoImg from '../assets/Rapido.png';
+import nayepankhImg from '../assets/NayePankhFoundation.png';
+import weatherImg from '../assets/Weather.png';
+import pizzaHomeImg from '../assets/Home.png';
+import pizzaSalesImg from '../assets/Sales.png';
+import aiImpactImg from '../assets/Aiimapct.png';
+import blinkitImg from '../assets/blinkit.png';
 
 const PROJECTS = [
   {
@@ -113,6 +120,32 @@ const PROJECTS = [
 
 const DASHBOARDS = [
   {
+    title: 'Rapido Ride Analytics Dashboard',
+    tagline: 'Interactive Power BI Ride-Booking Analytics',
+    description:
+      'An interactive Power BI project designed to transform raw ride-booking data into meaningful business insights. Enables businesses to monitor operational performance, analyze customer travel behavior, track revenue trends, and identify high-demand locations through intuitive visualizations.',
+    tech: ['Power BI', 'DAX', 'Power Query'],
+    github: 'https://github.com/itz-rakhi/Rapido-Ride-Analytics',
+    live: '#',
+    glowColor: '#f97316',
+    icon: FiBarChart2,
+    iconBg: 'linear-gradient(135deg, #f97316, #ea580c)',
+    images: [rapidoImg],
+  },
+  {
+    title: 'AI Student Impact Analysis Dashboard',
+    tagline: 'Power BI Generative AI Academic Impact Analytics',
+    description:
+      'An interactive Power BI project that analyzes the impact of Generative AI on students’ academic performance, study habits, skill retention, AI dependence, and mental well-being. Provides data-driven insights into how students across different majors and academic years use AI tools and how these factors influence learning outcomes.',
+    tech: ['Power BI', 'DAX', 'Power Query'],
+    github: 'https://github.com/itz-rakhi/AI_Student_Impact',
+    live: '#',
+    glowColor: '#a855f7',
+    icon: FiBarChart2,
+    iconBg: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+    images: [aiImpactImg],
+  },
+  {
     title: 'Pizza Sales Dashboard',
     tagline: 'Interactive Power BI Analytics Dashboard',
     description:
@@ -123,6 +156,8 @@ const DASHBOARDS = [
     glowColor: '#e11d48',
     icon: FiBarChart2,
     iconBg: 'linear-gradient(135deg, #e11d48, #be123c)',
+    images: [pizzaHomeImg, pizzaSalesImg],
+    sideBySide: true,
   },
   {
     title: 'BlinkIt Grocery Sales Dashboard',
@@ -135,6 +170,7 @@ const DASHBOARDS = [
     glowColor: '#84cc16',
     icon: FiBarChart2,
     iconBg: 'linear-gradient(135deg, #84cc16, #65a30d)',
+    images: [blinkitImg],
   },
   {
     title: 'NayePankh Foundation Dashboard',
@@ -147,6 +183,7 @@ const DASHBOARDS = [
     glowColor: '#f59e0b',
     icon: FiBarChart2,
     iconBg: 'linear-gradient(135deg, #f59e0b, #d97706)',
+    images: [nayepankhImg],
   },
   {
     title: 'Weather Forecast Dashboard',
@@ -159,6 +196,7 @@ const DASHBOARDS = [
     glowColor: '#38bdf8',
     icon: FiBarChart2,
     iconBg: 'linear-gradient(135deg, #38bdf8, #0284c7)',
+    images: [weatherImg],
   },
 ];
 
@@ -196,9 +234,75 @@ const BADGE_COLORS = {
   'Excel / CSV': '#22c55e',
 };
 
+function DashboardModal({ project, onClose }) {
+  const [idx, setIdx] = useState(0);
+  const images = project.images || [];
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: 'rgba(0,0,0,0.85)' }}
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        className="relative glass rounded-2xl overflow-hidden max-w-3xl w-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
+          <div>
+            <p className="text-white font-bold text-sm">{project.title}</p>
+            <p className="text-xs font-medium" style={{ color: project.glowColor }}>{project.tagline}</p>
+          </div>
+          <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors"><FiX size={18} /></button>
+        </div>
+        <div className="relative">
+          {project.sideBySide ? (
+            <div className="flex gap-1">
+              {images.map((img, i) => (
+                <img key={i} src={img} alt={`${project.title} screenshot ${i + 1}`} className="w-1/2 object-contain max-h-[70vh]" />
+              ))}
+            </div>
+          ) : (
+            <>
+              <img src={images[idx]} alt={`${project.title} screenshot ${idx + 1}`} className="w-full object-contain max-h-[70vh]" />
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setIdx((i) => (i - 1 + images.length) % images.length)}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white hover:text-white transition-all"
+                  ><FiChevronLeft size={18} /></button>
+                  <button
+                    onClick={() => setIdx((i) => (i + 1) % images.length)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 glass p-2 rounded-full text-white hover:text-white transition-all"
+                  ><FiChevronRight size={18} /></button>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+                    {images.map((_, i) => (
+                      <button key={i} onClick={() => setIdx(i)}
+                        className="w-1.5 h-1.5 rounded-full transition-all"
+                        style={{ background: i === idx ? project.glowColor : 'rgba(255,255,255,0.3)' }}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function ProjectCard({ project, index }) {
   const Icon = project.icon;
+  const [showModal, setShowModal] = useState(false);
   return (
+    <>
     <motion.div
       initial={{ opacity: 0, x: 40 }}
       whileInView={{ opacity: 1, x: 0 }}
@@ -249,28 +353,41 @@ function ProjectCard({ project, index }) {
           ))}
         </div>
 
-        {/* Button */}
-        <div className="flex mt-auto">
+        {/* Buttons */}
+        <div className="flex gap-1.5 mt-auto">
           {project.live && project.live !== '#' && !project.github ? (
             <motion.a
               whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
               href={project.live} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg glass text-slate-200 hover:text-white text-xs font-semibold transition-all"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg glass text-slate-200 hover:text-white text-[11px] font-semibold transition-all whitespace-nowrap"
             >
-              <FiExternalLink size={12} /> Live Demo
+              <FiExternalLink size={11} /> Live Demo
             </motion.a>
           ) : (
             <motion.a
               whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
               href={project.github} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg glass text-slate-200 hover:text-white text-xs font-semibold transition-all"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg glass text-slate-200 hover:text-white text-[11px] font-semibold transition-all whitespace-nowrap"
             >
-              <FiGithub size={12} /> View on GitHub
+              <FiGithub size={11} /> View on GitHub
             </motion.a>
+          )}
+          {project.images?.length > 0 && (
+            <motion.button
+              whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
+              onClick={() => setShowModal(true)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg glass text-slate-200 hover:text-white text-[11px] font-semibold transition-all whitespace-nowrap"
+            >
+              <FiImage size={11} /> View Dashboard
+            </motion.button>
           )}
         </div>
       </div>
     </motion.div>
+    <AnimatePresence>
+      {showModal && <DashboardModal project={project} onClose={() => setShowModal(false)} />}
+    </AnimatePresence>
+    </>
   );
 }
 
