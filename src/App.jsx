@@ -41,7 +41,7 @@ function Loader({ dark }) {
 
 export default function App() {
   const [loading, setLoading] = useState(true);
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   /* Apply/remove .light class on body */
   useEffect(() => {
